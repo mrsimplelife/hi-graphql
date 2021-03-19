@@ -13,10 +13,19 @@ export const readMovies = async (minimum_rating, limit) => {
   return data.data.movies;
 };
 export const readMovie = async (movie_id) => {
-  const { data } = await axios("movie_details.json", {
+  const { data } = await axios.get("movie_details.json", {
     params: {
       movie_id,
     },
   });
   return data.data.movie;
+};
+
+export const getSuggestions = async (movie_id) => {
+  const { data } = await axios.get("movie_suggestions.json", {
+    params: {
+      movie_id,
+    },
+  });
+  return data.data.movies;
 };
