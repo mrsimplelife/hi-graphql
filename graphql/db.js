@@ -4,7 +4,6 @@ const API_URL = "https://yts.am/api/v2";
 axios.defaults.baseURL = API_URL;
 
 export const readMovies = async (minimum_rating, limit) => {
-  console.log(limit, minimum_rating);
   const { data } = await axios.get("list_movies.json", {
     params: {
       limit,
@@ -12,4 +11,12 @@ export const readMovies = async (minimum_rating, limit) => {
     },
   });
   return data.data.movies;
+};
+export const readMovie = async (movie_id) => {
+  const { data } = await axios("movie_details.json", {
+    params: {
+      movie_id,
+    },
+  });
+  return data.data.movie;
 };
